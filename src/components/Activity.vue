@@ -54,7 +54,7 @@
          this.loading = true;
 
          //Fetch the API
-         let response = await fetch('http://www.boredapi.com/api/activity/');
+         let response = await fetch('https://www.boredapi.com/api/activity/');
 
          //If response is 404
          if (response.status == 404) {
