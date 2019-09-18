@@ -1,8 +1,8 @@
 <template lang="pug">
 
   .row
-    b-modal(id='saving-modal' centered title="Data is saved" size='sm' ok-only @ok='getAPIData(apiLink)') Your selection is saved!
-    b-modal(id='error-modal' centered title="Error" size='md' ok-only @ok='getAPIData(apiLink)')
+    b-modal(id='saving-modal' centered title="Data is saved" size='sm' ok-only @ok='getAPIData(defaultApiLink)') Your selection is saved!
+    b-modal(id='error-modal' centered title="Error" size='md' ok-only @ok='getAPIData(defaultApiLink)')
       p ERROR!!! PLEASE TRY AGAIN!
       p {{ this.errorMessage }}
 
@@ -57,7 +57,8 @@
         responseData: null,
         storeData: null,
         loading: false,
-        apiLink: 'https://www.boredapi.com/api/activity/',
+        defaultApiLink: 'https://www.boredapi.com/api/activity/', //DEFAULT api link
+        apiLink: 'https://www.boredapi.com/api/activity/', //Initial api link
         errorMessage: ''
       }
     },
@@ -80,7 +81,6 @@
 
          //If there is no data from API call
          if (this.responseData.error) {
-           this.apiLink = 'https://www.boredapi.com/api/activity/'; //Set api link to default one
            this.errorMessage = this.responseData.error; //Set the message
            this.$bvModal.show('error-modal'); //Show error modal
          }
@@ -166,7 +166,7 @@
 
     created() {
       //Initial request for random activity data
-      this.getAPIData(this.apiLink);
+      this.getAPIData(this.defaultApiLink);
     }
   }
 </script>
