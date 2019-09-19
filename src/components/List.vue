@@ -5,7 +5,7 @@
       b-modal(id='deletedall-modal' centered title="Deleted" size='sm' ok-only @ok='') All data has been deleted!
 
       .col-md-12.col-sm-12
-        b-table(striped hover :items='liveTableData' :fields='fields')
+        b-table(striped hover responsive :items='liveTableData' :fields='fields')
           template(v-slot:cell(id)='data') {{ data.index + 1 }}
 
           template(v-slot:cell(budget)='data') {{ data.value }}
